@@ -140,7 +140,7 @@ function App() {
 
   function tercerBoton() {
     setArrayPokemon([]);
-    const start = Date.now();
+
     const urls = [
       "https://pokeapi.co/api/v2/pokemon/1",
       "https://pokeapi.co/api/v2/pokemon/2",
@@ -155,13 +155,16 @@ function App() {
       "https://pokeapi.co/api/v2/pokemon/11",
       "https://pokeapi.co/api/v2/pokemon/12",
     ];
+
+    const start = Date.now();
+
     const promesas = urls.map((url) =>
       fetch(url).then((response) => response.json()),
     );
     Promise.all(promesas).then((pokemons) => {
       setArrayPokemon(pokemons);
-      const end = Date.now();
       setCarga2(end - start);
+      const end = Date.now();
     });
   }
 
