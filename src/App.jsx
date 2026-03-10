@@ -162,21 +162,19 @@ function App() {
       fetch(url).then((response) => response.json()),
     );
     Promise.all(promesas).then((pokemons) => {
+      const end = Date.now();
       setArrayPokemon(pokemons);
       setCarga2(end - start);
-      const end = Date.now();
     });
   }
 
   return (
     <div className="bg-gray-100 min-h-screen p-8">
       <div className="max-w-6xl mx-auto">
-        {/* Título */}
         <h1 className="text-4xl font-bold text-center mb-8">
           Comparación de Métodos Fetch
         </h1>
 
-        {/* Botones */}
         <div className="grid grid-cols-3 gap-4 mb-8">
           <Button onClick={primerBoton} carga={carga}>
             Callback Hell
@@ -189,7 +187,6 @@ function App() {
           </Button>
         </div>
 
-        {/* Grid Pokemon */}
         <div className="bg-white rounded-lg shadow p-6">
           <h2 className="text-2xl font-bold mb-4">
             Pokemon: {arrayPokemon.length}/12
